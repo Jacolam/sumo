@@ -3,7 +3,7 @@ var ctx = canvas.getContext("2d");
 var ballRadius = 20;
 //player 1
 var x = canvas.width/2 - 50 ;
-var y = canvas.height-250;
+var y = canvas.height + 280;
 var dx = 0;
 var dy = 0;
 //player 2
@@ -18,33 +18,29 @@ const distance = function(){
 
 document.addEventListener("keypress",function(e){
   // console.log("something was pressed")
-  console.log(e.key)
+  // console.log(e.key)
   const pressKey = e.key
 
   switch(pressKey){
     //player 1 listener
     case 'w':
       console.log("moving up")
-      dx = 0
-      dy += -0.5
+      dy = -2
       break;
 
     case 's':
       console.log("moving down")
-      dx = 0
-      dy += 0.5
+      dy = 2
       break;
 
     case 'a':
       console.log("moving left")
-      dx += -0.5
-      dy = 0
+      dx = -2
       break;
 
     case 'd':
       console.log("moving right")
-      dx += 0.5
-      dy = 0
+      dx = 2
       break;
 
     case ' ':
@@ -57,27 +53,22 @@ document.addEventListener("keypress",function(e){
     //player 2 listener
     case 'i':
       console.log("moving up")
-      console.log (dx2)
-      dx2 = 0
-      dy2 += -0.5
+      dy2 = -2
       break;
 
     case 'k':
       console.log("moving down")
-      dx2 = 0
-      dy2 += 0.5
+      dy2 = 2
       break;
 
     case 'j':
       console.log("moving left")
-      dx2 += -0.5
-      dy2 = 0
+      dx2 = -2
       break;
 
     case 'l':
       console.log("moving right")
-      dx2 += 0.5
-      dy2 = 0
+      dx2 = 2
       break;
 
       case ',':
@@ -107,7 +98,7 @@ function player2() {
 }
 
 function draw() {
-    console.log(x)
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     player1();
@@ -130,7 +121,9 @@ function draw() {
     }
     // need distance method between the two players
     if(distance() <= 2*ballRadius){
-      // debuggerf
+      // debugger
+      const olddx = dx
+      const olddy = dy
       dx = -dx;
       dy = -dy;
       dx2 = -dx2
@@ -157,4 +150,4 @@ function draw() {
 
 }
 
-setInterval(draw, .5);
+setInterval(draw, 10);
