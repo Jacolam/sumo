@@ -1,6 +1,6 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var ballRadius = 10;
+var ballRadius = 20;
 //player 1
 var x = canvas.width/2 - 50 ;
 var y = canvas.height-250;
@@ -11,6 +11,10 @@ var x2 = canvas.width/2 + 50 ;
 var y2 = canvas.height-250;
 var dx2 = 0;
 var dy2 = 0;
+
+const distance = function(){
+  return Math.sqrt((x-x2)**2 +(y-y2)**2)
+}
 
 document.addEventListener("keypress",function(e){
   // console.log("something was pressed")
@@ -82,7 +86,7 @@ document.addEventListener("keypress",function(e){
         dy2 = 0
         break;
       //player 2 listener end
-  }
+  }//switch end
 
 })
 
@@ -103,6 +107,7 @@ function player2() {
 }
 
 function draw() {
+    console.log(x)
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     player1();
@@ -115,9 +120,6 @@ function draw() {
         dy = -dy;
     }
 
-    //player 1
-    x += dx;
-    y += dy;
 
     //allows player 2 to bounce off walls
     if(x2 + dx2 > (canvas.width-ballRadius) || x2 + dx2 < ballRadius) {
@@ -126,23 +128,33 @@ function draw() {
     if(y2 + dy2 > canvas.height-ballRadius || y2 + dy2 < ballRadius) {
         dy2 = -dy2;
     }
-    // to adjust speed?
-    // if(x2 > 240){
-    //   dx2 = dx2 * 1.01
-    //   dy2 = dy2 * 1.01
-    //   console.log("hyper speed")
-
     // need distance method between the two players
+    if(distance() <= 2*ballRadius){
+      // debuggerf
+      dx = -dx;
+      dy = -dy;
+      dx2 = -dx2
+      dy2 = -dy2
+      // debugger
+      //new location of player 1
+      x += dx;
+      y += dy;
+      //new location of player 2
+      x2 += dx2;
+      y2 += dy2;
 
-    //new location of players
-    x2 += dx2;
-    y2 += dy2;
+    }else{
+      //new location of player 1
+      x += dx;
+      y += dy;
+      //new location of player 2
+      x2 += dx2;
+      y2 += dy2;
+    }
+    // debugger
 
+    // console.log(distance(x))
 
-}
-
-function distance(player1,player2){
-distance = Math.sqrt()
 }
 
 setInterval(draw, .5);
