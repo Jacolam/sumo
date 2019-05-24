@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>SUMO</title>
+    <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
+
+  </head>
+  <body>
+    <canvas id="myCanvas" width="480" height="320"></canvas>
+
+    <script>
+        var canvas = document.getElementById("myCanvas");
+        var ctx = canvas.getContext("2d");
+        var ballRadius = 10;
+        //player 1
+        var x = canvas.width/2 - 50 ;
+        var y = canvas.height-125;
+        var dx = 0;
+        var dy = 0;
+        //player 2
+        var x2 = canvas.width/2 + 50 ;
+        var y2 = canvas.height-125;
+        var dx2 = 0;
+        var dy2 = 0;
+
+        function drawBall() {
+            ctx.beginPath();
+            ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+            ctx.fillStyle = "#0095DD";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function drawBall2() {
+            ctx.beginPath();
+            ctx.arc(x2, y2, ballRadius, 0, Math.PI*2);
+            ctx.fillStyle = "#9995DD";
+            ctx.fill();
+            ctx.closePath();
+        }
+
+        function draw() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            drawBall();
+            drawBall2();
+
+            if(x + dx > (canvas.width-ballRadius) || x + dx < ballRadius) {
+                dx = -dx ;
+            }
+            if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
+                dy = -dy;
+            }
+            if(x > 240){
+              dx = dx * 1.01
+              dy = dy * 1.01
+              console.log("hyper speed")
+            }
+            //player 1
+            x += dx;
+            y += dy;
+
+            //player 2
+            if(x2 + dx2 > (canvas.width-ballRadius) || x2 + dx2 < ballRadius) {
+                dx2 = -dx2 ;
+            }
+            if(y2 + dy2 > canvas.height-ballRadius || y2 + dy2 < ballRadius) {
+                dy2 = -dy2;
+            }
+            if(x2 > 240){
+              dx2 = dx2 * 1.01
+              dy2 = dy2 * 1.01
+              console.log("hyper speed")
+            }
+            x2 += dx2;
+            y2 += dy2;
+        }
+
+        setInterval(draw, .5);
+    </script>
+    <script type="text/javascript" src='./src/index.js'></script>
+
+  </body>
+
+</html>
