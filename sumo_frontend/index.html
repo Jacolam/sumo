@@ -7,9 +7,9 @@
 
   </head>
   <body>
-    <canvas id="myCanvas" width="480" height="480"></canvas>
+    <canvas id="myCanvas" style='display:none' width="480" height="480"></canvas>
     <div id="container">
-        <form action="../index.html" method="post">
+        <form id='username' action="../index.html" method="post">
             <div>
           <label for="username">Player 1</label>
           <input type="text" id="player1" name="user_name" placeholder="Enter Username" >
@@ -21,9 +21,8 @@
         </form><br>
      <button id="changeSprites" type="button">Change Sprites</button><br><br>
      <button id="leaderboard" type="button">Leaderboard</button>
-
-
-      <button class="start">Start Game</button>
+      <button id='startBtn'>Start Game</button>
+      <button id='restartBtn' style='display:none'>Restart Game</button>
       <div class='jsfile'>
     <script type="text/javascript" src='./src/player.js'></script>
     </div>
