@@ -91,6 +91,9 @@ function draw() {
       console.log("Point to player 2")
        player2Points++
        console.log(player2Points)
+       if(player2Points === 3) {
+         alert("Player 2 has Won!")
+       }
       //add points to other player
       x1 = canvas.width/2 - 50
       y1 = canvas.height/2
@@ -98,6 +101,9 @@ function draw() {
       console.log("Point to player 1")
        player1Points++
        console.log(player1Points)
+       if(player1Points === 3) {
+         alert("Player 1 has Won!")
+       }
       //add points to other player
       x2 = canvas.width/2 + 50
       y2 = canvas.height/2
@@ -112,7 +118,9 @@ function draw() {
       dy2 = dy2 * acc2
       x2 += dx2;
       y2 += dy2;
-      circRad -= .05
+      if(enterplayers){
+        circRad -= .05
+      }// circle only begins to move after the game has started
     }
 
 }

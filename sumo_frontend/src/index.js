@@ -1,5 +1,5 @@
 const startForm = document.querySelector("#startForm")
-let enterplayers = true
+let enterplayers = false
 const name1 = document.querySelector("#name-1")
 const name2 = document.querySelector("#name-2")
 
