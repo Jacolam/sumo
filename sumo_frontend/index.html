@@ -4,7 +4,11 @@
   <head>
     <meta charset="utf-8">
     <title>SUMO</title>
-    <style>* { padding: 0; margin: 1000; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
+    <style>
+    #myCanvas{
+      border:1px solid black;
+    }
+    </style>
 
   </head>
 
@@ -16,6 +20,7 @@
     </form>
 
     <canvas id="myCanvas" width="480" height="480"></canvas>
+      <script type="text/javascript" src='./src/circle.js'></script>
       <script type="text/javascript" src='./src/player.js'></script>
       <script type="text/javascript" src='./src/index.js'></script>
 

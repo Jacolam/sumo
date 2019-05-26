@@ -14,6 +14,9 @@ var dx2 = 0;
 var dy2 = 0;
 var acc2 = .99
 
+var cx = canvas.width/2 ;
+var cy = canvas.height/2 ;
+
 const distance = function(){
   return Math.sqrt((x-x2)**2 +(y-y2)**2)
 }
@@ -23,9 +26,7 @@ document.addEventListener("keypress",function(e){
   // console.log("something was pressed")
   const prevKey = pressKey
   pressKey = e.key
-  // console.log("pressed key" , pressKey)
-  // console.log("previous key",  prevKey)
-  console.log(enterplayers)
+  // console.log(enterplayers)
   if (enterplayers){
   switch(pressKey){
     //player 1 listener
@@ -53,21 +54,17 @@ document.addEventListener("keypress",function(e){
 
     //player 2 listener
     case 'i':
-      dy2 = -2
+      dy2 = -1
       break;
-
     case 'k':
-      dy2 = 2
+      dy2 = 1
       break;
-
     case 'j':
-      dx2 = -2
+      dx2 = -1
       break;
-
     case 'l':
-      dx2 = 2
+      dx2 = 1
       break;
-
       case ',':
         dx2 = 0
         dy2 = 0
@@ -77,21 +74,30 @@ document.addEventListener("keypress",function(e){
 }
 })
 
-function player1() {
-    ctx.beginPath();
-    ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "#0095DD";
-    ctx.fill();
-    ctx.closePath();
-}
 
-function player2() {
+  function player1() {
+      ctx.beginPath();
+      ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+      ctx.fillStyle = "#0095DD";
+      ctx.fill();
+      ctx.closePath();
+  }
+
+  function player2() {
+      ctx.beginPath();
+      ctx.arc(x2, y2, ballRadius, 0, Math.PI*2);
+      ctx.fillStyle = "#9995DD";
+      ctx.fill();
+      ctx.closePath();
+  }
+
+  function deathCircle() {
     ctx.beginPath();
-    ctx.arc(x2, y2, ballRadius, 0, Math.PI*2);
-    ctx.fillStyle = "#9995DD";
-    ctx.fill();
+    ctx.arc(cx, cy, 200, 0, Math.PI *2);
+    ctx.fillStyle = "#0095DD";
+    ctx.stroke();
     ctx.closePath();
-}
+  }
 
 function draw() {
 
@@ -99,6 +105,7 @@ function draw() {
 
     player1();
     player2();
+    deathCircle();
     //allows player 1 to bounce off walls
     if(x + dx > (canvas.width-ballRadius) || x + dx < ballRadius) {
         dx = -dx ;
@@ -114,11 +121,9 @@ function draw() {
     if(y2 + dy2 > canvas.height-ballRadius || y2 + dy2 < ballRadius) {
         dy2 = -dy2;
     }
-    // need distance method between the two players
+
+    // collision of players
     if(distance() <= 2 * ballRadius){
-      // debugger
-      const olddx = dx
-      const olddy = dy
       dx = -dx;
       dy = -dy;
       dx2 = -dx2
@@ -142,9 +147,6 @@ function draw() {
       x2 += dx2;
       y2 += dy2;
     }
-    // debugger
-
-    // console.log(distance(x))
 
 }
 
