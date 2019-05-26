@@ -3,7 +3,7 @@ var ctx = canvas.getContext("2d");
 var ballRadius = 20;
 //player 1
 var x = canvas.width/2 - 50 ;
-var y = canvas.height + 280;
+var y = canvas.height-250;
 var dx = 0;
 var dy = 0;
 //player 2
@@ -16,35 +16,35 @@ const distance = function(){
   return Math.sqrt((x-x2)**2 +(y-y2)**2)
 }
 
+var pressKey = 0
+
 document.addEventListener("keypress",function(e){
   // console.log("something was pressed")
-  // console.log(e.key)
-  const pressKey = e.key
+  console.dir(e)
+  const prevKey = pressKey
+  pressKey = e.key
+  // console.log("pressed key" , pressKey)
+  // console.log("previous key",  prevKey)
 
   switch(pressKey){
     //player 1 listener
     case 'w':
-      console.log("moving up")
-      dy = -2
+      dy += -2
       break;
 
     case 's':
-      console.log("moving down")
-      dy = 2
+      dy += 2
       break;
 
     case 'a':
-      console.log("moving left")
-      dx = -2
+      dx += -2
       break;
 
     case 'd':
-      console.log("moving right")
-      dx = 2
+      dx += 2
       break;
 
     case ' ':
-      console.log("STOP")
       dx = 0
       dy = 0
       break;
@@ -52,27 +52,22 @@ document.addEventListener("keypress",function(e){
 
     //player 2 listener
     case 'i':
-      console.log("moving up")
       dy2 = -2
       break;
 
     case 'k':
-      console.log("moving down")
       dy2 = 2
       break;
 
     case 'j':
-      console.log("moving left")
       dx2 = -2
       break;
 
     case 'l':
-      console.log("moving right")
       dx2 = 2
       break;
 
       case ',':
-        console.log("STOP")
         dx2 = 0
         dy2 = 0
         break;
@@ -110,7 +105,6 @@ function draw() {
     if(y + dy > canvas.height-ballRadius || y + dy < ballRadius) {
         dy = -dy;
     }
-
 
     //allows player 2 to bounce off walls
     if(x2 + dx2 > (canvas.width-ballRadius) || x2 + dx2 < ballRadius) {
