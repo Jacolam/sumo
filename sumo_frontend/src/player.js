@@ -6,42 +6,43 @@ var x = canvas.width/2 - 50 ;
 var y = canvas.height-250;
 var dx = 0;
 var dy = 0;
+var acc1 = .99
 //player 2
 var x2 = canvas.width/2 + 50 ;
 var y2 = canvas.height-250;
 var dx2 = 0;
 var dy2 = 0;
+var acc2 = .99
 
 const distance = function(){
   return Math.sqrt((x-x2)**2 +(y-y2)**2)
 }
-
 var pressKey = 0
 
 document.addEventListener("keypress",function(e){
   // console.log("something was pressed")
-  console.dir(e)
   const prevKey = pressKey
   pressKey = e.key
   // console.log("pressed key" , pressKey)
   // console.log("previous key",  prevKey)
-
+  console.log(enterplayers)
+  if (enterplayers){
   switch(pressKey){
     //player 1 listener
     case 'w':
-      dy += -2
+      dy += -1
       break;
 
     case 's':
-      dy += 2
+      dy += 1
       break;
 
     case 'a':
-      dx += -2
+      dx += -1
       break;
 
     case 'd':
-      dx += 2
+      dx += 1
       break;
 
     case ' ':
@@ -73,7 +74,7 @@ document.addEventListener("keypress",function(e){
         break;
       //player 2 listener end
   }//switch end
-
+}
 })
 
 function player1() {
@@ -114,7 +115,7 @@ function draw() {
         dy2 = -dy2;
     }
     // need distance method between the two players
-    if(distance() <= 2*ballRadius){
+    if(distance() <= 2 * ballRadius){
       // debugger
       const olddx = dx
       const olddy = dy
@@ -122,7 +123,6 @@ function draw() {
       dy = -dy;
       dx2 = -dx2
       dy2 = -dy2
-      // debugger
       //new location of player 1
       x += dx;
       y += dy;
@@ -132,9 +132,13 @@ function draw() {
 
     }else{
       //new location of player 1
+      dx = dx * acc1
+      dy = dy * acc1
       x += dx;
       y += dy;
       //new location of player 2
+      dx2 = dx2 * acc2
+      dy2 = dy2 * acc2
       x2 += dx2;
       y2 += dy2;
     }

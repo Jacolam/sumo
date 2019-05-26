@@ -4,14 +4,20 @@
   <head>
     <meta charset="utf-8">
     <title>SUMO</title>
-    <style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
+    <style>* { padding: 0; margin: 1000; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
 
   </head>
-  <body>
-    <canvas id="myCanvas" width="480" height="480"></canvas>
 
-    <script type="text/javascript" src='./src/player.js'></script>
-    <script type="text/javascript" src='./src/index.js'></script>
+  <body>
+    <form id="startForm" action="index.html" method="post" style="">
+      <p>Player 1<input id="name-1" type="text" name="player1" value=""></p>
+      <p>Player 2<input id="name-2" type="text" name="player2" value=""></p>
+      <input type="button" name="Start" value="Start">
+    </form>
+
+    <canvas id="myCanvas" width="480" height="480"></canvas>
+      <script type="text/javascript" src='./src/player.js'></script>
+      <script type="text/javascript" src='./src/index.js'></script>
 
   </body>
 
