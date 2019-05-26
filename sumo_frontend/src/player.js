@@ -16,6 +16,8 @@ var acc2 = .99
 
 var cx = canvas.width/2 ;
 var cy = canvas.height/2 ;
+var circRad = 300
+
 
 const distance = function(){
   return Math.sqrt((x-x2)**2 +(y-y2)**2)
@@ -23,29 +25,25 @@ const distance = function(){
 var pressKey = 0
 
 document.addEventListener("keypress",function(e){
-  // console.log("something was pressed")
+
   const prevKey = pressKey
   pressKey = e.key
-  // console.log(enterplayers)
+
   if (enterplayers){
   switch(pressKey){
     //player 1 listener
     case 'w':
       dy += -1
       break;
-
     case 's':
       dy += 1
       break;
-
     case 'a':
       dx += -1
       break;
-
     case 'd':
       dx += 1
       break;
-
     case ' ':
       dx = 0
       dy = 0
@@ -93,8 +91,7 @@ document.addEventListener("keypress",function(e){
 
   function deathCircle() {
     ctx.beginPath();
-    ctx.arc(cx, cy, 200, 0, Math.PI *2);
-    ctx.fillStyle = "#0095DD";
+    ctx.arc(cx, cy, circRad, 0, Math.PI *2);
     ctx.stroke();
     ctx.closePath();
   }
@@ -135,6 +132,8 @@ function draw() {
       x2 += dx2;
       y2 += dy2;
 
+      circRad -= .05
+
     }else{
       //new location of player 1
       dx = dx * acc1
@@ -146,6 +145,7 @@ function draw() {
       dy2 = dy2 * acc2
       x2 += dx2;
       y2 += dy2;
+      circRad -= .05
     }
 
 }
