@@ -1,15 +1,31 @@
 const startForm = document.querySelector("#startForm")
 let enterplayers = false
+
+let controlsView = false
+const controlPanel = document.querySelector("#control-panel")
+controlPanel.style.display = "none"
+
 const name1 = document.querySelector("#name-1")
 const name2 = document.querySelector("#name-2")
 
 document.addEventListener("DOMContentLoaded",function(){
 
   startForm.addEventListener("click",function(e){
-    // console.log(e.target)
+    // console.log(e.target.name)
+    const target = e.target.name
+    if(target === "start")
     if (name1.value && name2.value ){
       enterplayers = true
     }else {
+      alert("Please add player names")
+    }
+    if(target === "controls"){
+      controlsView = !controlsView
+      if (controlsView){
+        controlPanel.style.display = 'block'
+      }else {
+        controlPanel.style.display = 'none'
+      }
     }
   })
 
@@ -33,12 +49,15 @@ document.addEventListener("DOMContentLoaded",function(){
       case 'd':
         dx1 += 1
         break;
+        // player 1 listener end
+        //reset locations if stuck
       case ' ':
-        dx1 = 0
-        dy1 = 0
-        break;
-      // player 1 listener end
+        x1 = canvas.width/2 - 50 
+        y1 = canvas.height-250
 
+        x2 = canvas.width/2 + 50
+        y2 = canvas.height-250
+        break;
       //player 2 listener
       case 'i':
         dy2 = -1

@@ -8,22 +8,43 @@
     #myCanvas{
       border:1px solid black;
     }
+    .player-controls{
+      border:1px solid black;
+      padding-left: 20px
+    }
     </style>
 
   </head>
 
   <body>
     <h1>SUMO ARENA</h1>
-    <button type="button" name="controls"> Controls</button>
     <form id="startForm" action="index.html" method="post" style="">
+      <button type="button" name="controls"> Controls</button>
       <p>Player 1<input id="name-1" type="text" name="player1" value=""></p>
       <p>Player 2<input id="name-2" type="text" name="player2" value=""></p>
-      <input type="button" name="Start" value="Start">
+      <input type="button" name="start" value="Start">
     </form>
+    <div id="control-panel" style="">
+      <div class="player-controls">
+        <h3>Player 1</h3>
+        <p>Up = W </p>
+        <p>Down = S </p>
+        <p>Left = A </p>
+        <p>Right = D </p>
+      </div>
+
+      <div class="player-controls">
+        <h3>Player 2</h3>
+        <p>Up = I </p>
+        <p>Down = K </p>
+        <p>Left = J </p>
+        <p>Right = L </p>
+      </div>
+
+    </div>
 
     <canvas id="myCanvas" width="480" height="480"></canvas>
       <script type="text/javascript" src='./src/player.js'></script>
-      <script type="text/javascript" src='./src/circle.js'></script>
       <script type="text/javascript" src='./src/index.js'></script>
 
   </body>

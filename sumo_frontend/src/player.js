@@ -92,7 +92,7 @@ function draw() {
        player2Points++
        console.log(player2Points)
        if(player2Points === 3) {
-         alert("Player 2 has Won!")
+         alert(`${name2.value} has Won!`)
        }
       //add points to other player
       x1 = canvas.width/2 - 50
@@ -102,7 +102,7 @@ function draw() {
        player1Points++
        console.log(player1Points)
        if(player1Points === 3) {
-         alert("Player 1 has Won!")
+         alert(`${name1.value} has Won!`)
        }
       //add points to other player
       x2 = canvas.width/2 + 50
