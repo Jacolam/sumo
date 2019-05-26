@@ -18,8 +18,11 @@ var x3 = canvas.width/2 ;
 var y3 = canvas.height/2 ;
 var circRad = 300
 
+var player1Points = 0
+var player2Points = 0
 
-const distance = function(){
+
+const distance = function(x1, x2,y1, y2){
   return Math.sqrt((x1-x2)**2 +(y1-y2)**2)
 }
 
@@ -58,7 +61,7 @@ function draw() {
         dx1 = -dx1 ;
     }
     if(y1 + dy1 > canvas.height-ballRadius || y1 + dy1 < ballRadius) {
-        dy1 = -dy;
+        dy1 = -dy1;
     }
 
     //allows player 2 to bounce off walls
@@ -70,7 +73,7 @@ function draw() {
     }
 
     // collision of players
-    if(distance() <= 2 * ballRadius){
+    if(distance(x1, x2, y1, y2) <= 2 * ballRadius){
       dx1 = -dx1
       dy1 = -dy1
       dx2 = -dx2
@@ -84,6 +87,20 @@ function draw() {
 
       circRad -= .05
 
+    }else if (distance(x1, x3 ,y1, y3) >= circRad){
+      console.log("Point to player 2")
+       player2Points++
+       console.log(player2Points)
+      //add points to other player
+      x1 = canvas.width/2 - 50
+      y1 = canvas.height/2
+    }else if (distance(x2, x3 ,y2, y3) >= circRad){
+      console.log("Point to player 1")
+       player1Points++
+       console.log(player1Points)
+      //add points to other player
+      x2 = canvas.width/2 + 50
+      y2 = canvas.height/2
     }else{
       //new location of player 1
       dx1 = dx1 * acc1
