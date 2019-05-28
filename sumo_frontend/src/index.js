@@ -67,6 +67,10 @@ document.addEventListener("DOMContentLoaded",function(){
         break;
         // player 1 listener end
         //reset locations if stuck
+      case 'e':
+        dx1 = 0
+        dy1 = 0 
+        break;
       case ' ':
         x1 = canvas.width/2 - 50
         y1 = canvas.height-250
@@ -87,7 +91,7 @@ document.addEventListener("DOMContentLoaded",function(){
       case 'l':
         dx2 += 2
         break;
-      case ',':
+      case 'u':
         dx2 = 0
         dy2 = 0
       break;
