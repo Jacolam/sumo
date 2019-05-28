@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded",function(){
     if(target === "start")
     if (name1.value && name2.value ){
       enterplayers = true
+      myCanvas.style.display = 'block';
+      startForm.style.display = 'none'
     }else {
       alert("Please add player names")
     }
@@ -52,7 +54,7 @@ document.addEventListener("DOMContentLoaded",function(){
         // player 1 listener end
         //reset locations if stuck
       case ' ':
-        x1 = canvas.width/2 - 50 
+        x1 = canvas.width/2 - 50
         y1 = canvas.height-250
 
         x2 = canvas.width/2 + 50
