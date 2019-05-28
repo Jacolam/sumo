@@ -47,20 +47,20 @@ const distance = function(x1, x2,y1, y2){
 
   function player1() {
       ctx.beginPath();
-      ctx.arc(x1, y1, ballRadius, 0, Math.PI*2);
+      ctx.arc(x1, y1, ballRadius1, 0, Math.PI*2);
       ctx.fillStyle = "#0095DD";
       ctx.fill();
       ctx.closePath();
-      ctx.drawImage(playerSprite1, x1-20, y1-20, 40, 40);
+      ctx.drawImage(playerSprite1, x1-ballRadius1, y1-ballRadius1, 2 * ballRadius1, 2 * ballRadius1);
   }
 
   function player2() {
       ctx.beginPath();
-      ctx.arc(x2, y2, ballRadius, 0, Math.PI*2);
+      ctx.arc(x2, y2, ballRadius2, 0, Math.PI*2);
       ctx.fillStyle = "#9995DD";
       ctx.fill();
       ctx.closePath();
-      ctx.drawImage(playerSprite2, x2-20, y2-20, 40, 40);
+      ctx.drawImage(playerSprite2, x2-ballRadius2, y2-ballRadius2, 2 * ballRadius2, 2 * ballRadius2);
   }
 
   function deathCircle() {
@@ -179,6 +179,12 @@ function draw() {
       dx2 = 0
       y2 = canvas.height/2
       dy2 = 0
+    }else if (distance(x1,x4,y1,y4)<= ballRadius1 + 20){
+      ballRadius1 += 20
+      powerup = false
+      p1multiplier = .85
+      x4 = 0
+      y4 = 0
     }else if (distance(x2,x4,y2,y4)<= ballRadius2 + 20){
       ballRadius2 += 20
       powerup = false
