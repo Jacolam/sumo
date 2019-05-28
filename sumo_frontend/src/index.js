@@ -69,7 +69,7 @@ document.addEventListener("DOMContentLoaded",function(){
         //reset locations if stuck
       case 'e':
         dx1 = 0
-        dy1 = 0 
+        dy1 = 0
         break;
       case ' ':
         x1 = canvas.width/2 - 50
