@@ -12,6 +12,44 @@
       border:1px solid black;
       padding-left: 20px
     }
+
+    table, .name-alignment, .score-alignment   {
+
+    }
+
+    /* h2 {
+      display:inline;
+      position: relative;
+      top: .5%;
+      left: .5%;
+      padding-right: 150px;
+    }
+
+    h3 {
+      height: 50px;
+      display:inline;
+      position: relative;
+      top: .5%;
+      left: .5%;
+      padding-right: 150px;
+    } */
+
+    .name-alignment{
+      display:inline;
+      position: relative;
+      top: .5%;
+      left: .5%;
+      padding-right: 180px;
+    }
+    .score-alignment{
+    height: 50px;
+    display:inline;
+    position: relative;
+    top: .5%;
+    left: .5%;
+    padding-right: 150px;
+    }
+
     </style>
 
   </head>
@@ -28,7 +66,7 @@
     <br>
     <button id="change-sprites" type="button">Change Sprites</button>
     <br>
-    <div id="control-panel" style="">
+    <div id="control-panel" style='display:none'>
       <div class="player-controls">
         <h3>Player 1</h3>
         <p>Up = W </p>
@@ -46,11 +84,21 @@
       </div>
 
     </div>
-    
+
+    <table>
+    <h3 id="p1-tag" class="name-alignment"></h3>
+    <h3 id="p2-tag" class="name-alignment"></h3>
+    </table>
+
+    <table>
+
+      <h3 id="p1-score" class="score-alignment"></h3>
+      <h3 id="p2-score" class="score-alignment"></h3>
+    </table>
+
     <canvas id="myCanvas" width="480" height="480" style='display:none' ></canvas>
       <script type="text/javascript" src='./src/player.js'></script>
       <script type="text/javascript" src='./src/index.js'></script>
-
   </body>
 
 </html>
