@@ -4,6 +4,8 @@
   <head>
     <meta charset="utf-8">
     <title>SUMO</title>
+<<<<<<< HEAD
+=======
     <style>
     #myCanvas{
       border:1px solid black;
@@ -13,10 +15,34 @@
       padding-left: 20px
     }
     </style>
+>>>>>>> master
 
   </head>
 
   <body>
+<<<<<<< HEAD
+    <canvas id="myCanvas" style='display:none' width="480" height="480"></canvas>
+    <div id="container">
+        <form id='username' action="../index.html" method="post">
+            <div>
+          <label for="username">Player 1</label>
+          <input type="text" id="player1" name="user_name" placeholder="Enter Username" >
+          <span>
+          <label for="username">Player 2</label>
+          <input type="text" id="player2" name="user_name" placeholder="Enter Username" >
+          </span>
+           </div>
+        </form><br>
+     <button id="changeSprites" type="button">Change Sprites</button><br><br>
+     <button id="leaderboard" type="button">Leaderboard</button>
+      <button id='startBtn'>Start Game</button>
+      <button id='restartBtn' style='display:none'>Restart Game</button>
+      <div class='jsfile'>
+    <script type="text/javascript" src='./src/player.js'></script>
+    </div>
+
+</div>
+=======
     <h1>SUMO ARENA</h1>
     <form id="startForm" action="index.html" method="post" style="">
       <button type="button" name="controls"> Controls</button>
@@ -46,7 +72,10 @@
     <canvas id="myCanvas" width="480" height="480"></canvas>
       <script type="text/javascript" src='./src/player.js'></script>
       <script type="text/javascript" src='./src/index.js'></script>
+>>>>>>> master
 
+<style>* { padding: 0; margin: 0; } canvas { background: #eee; display: block; margin: 0 auto; }</style>
+  <script type="text/javascript" src='./src/index.js'></script>
   </body>
 
 </html>
