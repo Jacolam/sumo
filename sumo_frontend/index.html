@@ -13,11 +13,11 @@
       padding-left: 20px
     }
 
-    table, h2, h3   {
+    table, .name-alignment, .score-alignment   {
 
     }
 
-    h2 {
+    /* h2 {
       display:inline;
       position: relative;
       top: .5%;
@@ -32,21 +32,30 @@
       top: .5%;
       left: .5%;
       padding-right: 150px;
-    }
+    } */
 
-    /* .name-alignment-1{
+    .name-alignment{
       display:inline;
+      position: relative;
+      top: .5%;
+      left: .5%;
+      padding-right: 180px;
     }
-    .name-alignment-2{
+    /* .name-alignment-2{
       display:inline;
       float: right;
       width: 1000px ;
       margin: 0  auto;
+    } */
+    .score-alignment{
+    height: 50px;
+    display:inline;
+    position: relative;
+    top: .5%;
+    left: .5%;
+    padding-right: 150px;
     }
-    .score-alignment-1{
-      display:inline;
-    }
-    .score-alignment-2{
+    /* .score-alignment-2{
       display:inline;
 
     } */
@@ -88,14 +97,14 @@
     </div>
 
     <table>
-    <h2 id="p1-tag" class="name-alignment-1"></h2>
-    <h2 id="p2-tag" class="name-alignment-2"></h2>
+    <h3 id="p1-tag" class="name-alignment"></h3>
+    <h3 id="p2-tag" class="name-alignment"></h3>
     </table>
 
     <table>
 
-      <h3 id="p1-score"></h3>
-      <h3 id="p2-score"></h3>
+      <h3 id="p1-score" class="score-alignment"></h3>
+      <h3 id="p2-score" class="score-alignment"></h3>
     </table>
 
     <canvas id="myCanvas" width="480" height="480" style='display:none' ></canvas>

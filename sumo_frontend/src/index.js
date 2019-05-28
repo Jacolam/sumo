@@ -26,11 +26,11 @@ document.addEventListener("DOMContentLoaded",function(){
       myCanvas.style.display = 'block';
       startForm.style.display = 'none'
 
-      p1.innerHTML = `<h2 class="name-alignment-1" style='color: blue;'>${name1.value}</h2>`
-      p2.innerHTML = `<h2 class="name-alignment-2" style='color: purple;'>${name2.value}</h2>`
+      p1.innerHTML = `<h3 class="name-alignment" style='color: blue;'>${name1.value}</h3>`
+      p2.innerHTML = `<h3 class="name-alignment" style='color: purple;'>${name2.value}</h3>`
 
-      p1Score.innerHTML = `<h3 class="score-alignment-1" style='color: blue;'>score:</h3>`
-      p2Score.innerHTML = `<h3 class="name-alignment-2" style='color: purple;'>score:</h3>`
+      p1Score.innerHTML = `<h3 class="score-alignment" style='color: blue;'>score: 0</h3>`
+      p2Score.innerHTML = `<h3 class="score-alignment" style='color: purple;'>score: 0</h3>`
 
     }else {
       alert("Please add player names")
