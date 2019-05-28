@@ -119,7 +119,9 @@ function draw() {
        }
       //add points to other player
       x1 = canvas.width/2 - 50
+      dx1 = 0
       y1 = canvas.height/2
+      dy1 = 0
     }else if (distance(x2, x3 ,y2, y3) >= circRad){
       console.log("Point to player 1")
        player1Points++
@@ -129,7 +131,9 @@ function draw() {
        }
       //add points to other player
       x2 = canvas.width/2 + 50
+      dx2 = 0
       y2 = canvas.height/2
+      dy2 = 0
     }else{
       //new location of player 1
       dx1 = dx1 * acc1
