@@ -6,6 +6,7 @@ var y1 = canvas.height-250;
 var dx1 = 0;
 var dy1 = 0;
 var acc1 = .99
+var p1multiplier = 1.5
 var ballRadius1 = 20;
 
 //player 2
@@ -14,41 +15,59 @@ var y2 = canvas.height-250;
 var dx2 = 0;
 var dy2 = 0;
 var acc2 = .99
+var p2multiplier = 1.5
 var ballRadius2 = 20;
 // circle params
 var x3 = canvas.width/2 ;
 var y3 = canvas.height/2 ;
 var circRad = 300
-
+//in game points
 var player1Points = 0
 var player2Points = 0
+
+//power up
+var x4 = canvas.width/2 + Math.random()*100
+var y4 = canvas.height/2 + Math.random()*100
+
 
 const distance = function(x1, x2,y1, y2){
   return Math.sqrt((x1-x2)**2 +(y1-y2)**2)
 }
 
-  function player1() {
-      ctx.beginPath();
-      ctx.arc(x1, y1, ballRadius1, 0, Math.PI*2);
-      ctx.fillStyle = "#0095DD";
-      ctx.fill();
-      ctx.closePath();
-  }
-
-  function player2() {
-      ctx.beginPath();
-      ctx.arc(x2, y2, ballRadius2, 0, Math.PI*2);
-      ctx.fillStyle = "#9995DD";
-      ctx.fill();
-      ctx.closePath();
-  }
-
-  function deathCircle() {
+function player1() {
     ctx.beginPath();
-    ctx.arc(x3, y3, circRad, 0, Math.PI *2);
-    ctx.stroke();
+    ctx.arc(x1, y1, ballRadius1, 0, Math.PI*2);
+    ctx.fillStyle = "#0095DD";
+    ctx.fill();
     ctx.closePath();
-  }
+}
+
+function player2() {
+    ctx.beginPath();
+    ctx.arc(x2, y2, ballRadius2, 0, Math.PI*2);
+    ctx.fillStyle = "#9995DD";
+    ctx.fill();
+    ctx.closePath();
+}
+
+function deathCircle() {
+  ctx.beginPath();
+  ctx.arc(x3, y3, circRad, 0, Math.PI *2);
+  ctx.stroke();
+  ctx.closePath();
+}
+
+let shroomsprite = new Image()
+shroomsprite.src = "https://oyster.ignimgs.com/mediawiki/apis.ign.com/new-super-mario-bros-u/0/00/3a083df05201781d56433d893565e39edca3e161_large.jpg?width=640"
+
+function bubba(){
+  ctx.beginPath();
+  ctx.arc(x4, y4, 20, 0, Math.PI *2);
+  ctx.closePath();
+  ctx.drawImage(shroomsprite, x4 - 25, y4 -25, 50, 50)
+}
+
+var powerup = true
 
 function draw() {
 
@@ -57,6 +76,9 @@ function draw() {
     player1();
     player2();
     deathCircle();
+    if(powerup){
+      bubba();
+    }
 
     if( Math.abs(dx1) < .2){
       dx1 = 0
@@ -97,10 +119,10 @@ function draw() {
         dx2 = -dx1
         dy2 = -dy1
       }else{
-      dx1 = -dx1 * 1.5
-      dy1 = -dy1  * 1.5
-      dx2 = -dx2 * 1.5
-      dy2 = -dy2 * 1.5
+      dx1 = -dx1 * p1multiplier
+      dy1 = -dy1  * p1multiplier
+      dx2 = -dx2 * p2multiplier
+      dy2 = -dy2 * p2multiplier
       //new location of player 1
       x1 += dx1
       y1 += dy1
@@ -122,6 +144,7 @@ function draw() {
       dx1 = 0
       y1 = canvas.height/2
       dy1 = 0
+      //collision with circle
     }else if (distance(x2, x3 ,y2, y3) >= circRad){
       console.log("Point to player 1")
        player1Points++
@@ -134,6 +157,18 @@ function draw() {
       dx2 = 0
       y2 = canvas.height/2
       dy2 = 0
+    }else if (distance(x1,x4,y1,y4) <= ballRadius1 + 20){
+      ballRadius1 += 20
+      powerup = false
+      p1multiplier = .85
+      x4 = 0
+      y4 = 0
+    }else if (distance(x2,x4,y2,y4)<= ballRadius2 + 20){
+      ballRadius2 += 20
+      powerup = false
+      p2multiplier = .85
+      x4 = 0
+      y4 = 0
     }else{
       //new location of player 1
       dx1 = dx1 * acc1
