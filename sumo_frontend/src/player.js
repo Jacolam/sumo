@@ -1,12 +1,12 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
-var ballRadius = 20;
 //player 1
 var x1 = canvas.width/2 - 50 ;
 var y1 = canvas.height-250;
 var dx1 = 0;
 var dy1 = 0;
 var acc1 = .99
+var ballRadius1 = 20;
 
 //player 2
 var x2 = canvas.width/2 + 50 ;
@@ -14,6 +14,7 @@ var y2 = canvas.height-250;
 var dx2 = 0;
 var dy2 = 0;
 var acc2 = .99
+var ballRadius2 = 20;
 // circle params
 var x3 = canvas.width/2 ;
 var y3 = canvas.height/2 ;
@@ -28,7 +29,7 @@ const distance = function(x1, x2,y1, y2){
 
   function player1() {
       ctx.beginPath();
-      ctx.arc(x1, y1, ballRadius, 0, Math.PI*2);
+      ctx.arc(x1, y1, ballRadius1, 0, Math.PI*2);
       ctx.fillStyle = "#0095DD";
       ctx.fill();
       ctx.closePath();
@@ -36,7 +37,7 @@ const distance = function(x1, x2,y1, y2){
 
   function player2() {
       ctx.beginPath();
-      ctx.arc(x2, y2, ballRadius, 0, Math.PI*2);
+      ctx.arc(x2, y2, ballRadius2, 0, Math.PI*2);
       ctx.fillStyle = "#9995DD";
       ctx.fill();
       ctx.closePath();
@@ -70,23 +71,23 @@ function draw() {
       dy2 = 0
     }
     //allows player 1 to bounce off walls
-    if(x1 + dx1 > (canvas.width-ballRadius) || x1 + dx1 < ballRadius) {
+    if(x1 + dx1 > (canvas.width-ballRadius1) || x1 + dx1 < ballRadius1) {
         dx1 = -dx1 ;
     }
-    if(y1 + dy1 > canvas.height-ballRadius || y1 + dy1 < ballRadius) {
+    if(y1 + dy1 > canvas.height-ballRadius1 || y1 + dy1 < ballRadius1) {
         dy1 = -dy1;
     }
 
     //allows player 2 to bounce off walls
-    if(x2 + dx2 > (canvas.width-ballRadius) || x2 + dx2 < ballRadius) {
+    if(x2 + dx2 > (canvas.width-ballRadius2) || x2 + dx2 < ballRadius2) {
         dx2 = -dx2 ;
     }
-    if(y2 + dy2 > canvas.height-ballRadius || y2 + dy2 < ballRadius) {
+    if(y2 + dy2 > canvas.height-ballRadius2 || y2 + dy2 < ballRadius2) {
         dy2 = -dy2;
     }
 
     // collision of players
-    if(distance(x1, x2, y1, y2) <= 2 * ballRadius){
+    if(distance(x1, x2, y1, y2) <= ballRadius1 + ballRadius2){
       if(dx1=== 0 && dy1=== 0){
         console.log("player 1 is not moving")
         dx1 = -dx2
