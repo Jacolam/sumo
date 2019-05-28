@@ -26,8 +26,10 @@ var player1Points = 0
 var player2Points = 0
 
 //power up
-var x4 = canvas.width/2 + Math.random()*100
-var y4 = canvas.height/2 + Math.random()*100
+const plusOrMinus = function(){Math.random() < 0.5 ? -1 : 1}
+// debugger
+var x4 = canvas.width/2 + Math.random()*200
+var y4 = canvas.height/2 + Math.random()*200
 
 
 const distance = function(x1, x2,y1, y2){
@@ -73,12 +75,12 @@ function draw() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    player1();
-    player2();
-    deathCircle();
     if(powerup){
       bubba();
     }
+    player1();
+    player2();
+    deathCircle();
 
     if( Math.abs(dx1) < .2){
       dx1 = 0
@@ -157,12 +159,6 @@ function draw() {
       dx2 = 0
       y2 = canvas.height/2
       dy2 = 0
-    }else if (distance(x1,x4,y1,y4) <= ballRadius1 + 20){
-      ballRadius1 += 20
-      powerup = false
-      p1multiplier = .85
-      x4 = 0
-      y4 = 0
     }else if (distance(x2,x4,y2,y4)<= ballRadius2 + 20){
       ballRadius2 += 20
       powerup = false
