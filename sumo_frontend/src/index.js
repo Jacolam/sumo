@@ -1,9 +1,9 @@
 const startForm = document.querySelector("#startForm")
-let enterplayers = false
 
+let enterplayers = false
 let controlsView = false
+
 const controlPanel = document.querySelector("#control-panel")
-controlPanel.style.display = "none"
 
 const name1 = document.querySelector("#name-1")
 const name2 = document.querySelector("#name-2")
@@ -11,13 +11,16 @@ const name2 = document.querySelector("#name-2")
 document.addEventListener("DOMContentLoaded",function(){
 
   startForm.addEventListener("click",function(e){
-    // console.log(e.target.name)
+    console.log(e.target.name)
     const target = e.target.name
     if(target === "start")
     if (name1.value && name2.value ){
+
       enterplayers = true
       myCanvas.style.display = 'block';
       startForm.style.display = 'none'
+      const nameArr = [name1.value , name2.value]
+
     }else {
       alert("Please add player names")
     }
@@ -40,16 +43,16 @@ document.addEventListener("DOMContentLoaded",function(){
     switch(pressKey){
       //player 1 listener
       case 'w':
-        dy1 += -1
+        dy1 += -2
         break;
       case 's':
-        dy1 += 1
+        dy1 += 2
         break;
       case 'a':
-        dx1 += -1
+        dx1 += -2
         break;
       case 'd':
-        dx1 += 1
+        dx1 += 2
         break;
         // player 1 listener end
         //reset locations if stuck
@@ -62,16 +65,16 @@ document.addEventListener("DOMContentLoaded",function(){
         break;
       //player 2 listener
       case 'i':
-        dy2 = -1
+        dy2 += -2
         break;
       case 'k':
-        dy2 = 1
+        dy2 += 2
         break;
       case 'j':
-        dx2 = -1
+        dx2 += -2
         break;
       case 'l':
-        dx2 = 1
+        dx2 += 2
         break;
       case ',':
         dx2 = 0
