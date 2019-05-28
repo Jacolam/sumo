@@ -7,8 +7,11 @@ const controlPanel = document.querySelector("#control-panel")
 
 const name1 = document.querySelector("#name-1")
 const name2 = document.querySelector("#name-2")
+const p1 = document.getElementById('p1-tag')
+const p2 = document.getElementById('p2-tag')
 
 document.addEventListener("DOMContentLoaded",function(){
+
 
   startForm.addEventListener("click",function(e){
     console.log(e.target.name)
@@ -19,8 +22,8 @@ document.addEventListener("DOMContentLoaded",function(){
       enterplayers = true
       myCanvas.style.display = 'block';
       startForm.style.display = 'none'
-      const nameArr = [name1.value , name2.value]
-
+      p1.innerHTML = `<span class="name-alignment-1" style='color: blue;'>${name1.value}</span>`
+      p2.innerHTML = `<span class="name-alignment-2" style='color: purple;'>${name2.value}</span>`
     }else {
       alert("Please add player names")
     }
