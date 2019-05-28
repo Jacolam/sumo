@@ -1,6 +1,6 @@
 const startForm = document.querySelector("#startForm")
 
-let enterplayers = true
+let enterplayers = false
 let controlsView = false
 
 const controlPanel = document.querySelector("#control-panel")
