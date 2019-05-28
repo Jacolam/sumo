@@ -31,6 +31,9 @@ const plusOrMinus = function(){Math.random() < 0.5 ? -1 : 1}
 var x4 = canvas.width/2 + Math.random()*200
 var y4 = canvas.height/2 + Math.random()*200
 
+let p2Score = document.getElementById('p2-score')
+let p1Score = document.getElementById('p1-score')
+
 
 const distance = function(x1, x2,y1, y2){
   return Math.sqrt((x1-x2)**2 +(y1-y2)**2)
@@ -137,7 +140,7 @@ function draw() {
     }else if (distance(x1, x3 ,y1, y3) >= circRad){
       console.log("Point to player 2")
        player2Points++
-       console.log(player2Points)
+       p2Score.innerHTML = `<h3 class="score-alignment" style='color: purple;'>score: ${player2Points}</h3>`
        if(player2Points === 3) {
          alert(`${name2.value} has Won!`)
        }
@@ -150,6 +153,7 @@ function draw() {
     }else if (distance(x2, x3 ,y2, y3) >= circRad){
       console.log("Point to player 1")
        player1Points++
+      p1Score.innerHTML = `<h3 class="score-alignment" style='color: blue;'>score: ${player1Points}</h3>`
        console.log(player1Points)
        if(player1Points === 3) {
          alert(`${name1.value} has Won!`)
