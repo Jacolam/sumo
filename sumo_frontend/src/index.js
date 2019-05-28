@@ -1,16 +1,12 @@
 const startForm = document.querySelector("#startForm")
 let enterplayers = false
-
 let controlsView = false
 const controlPanel = document.querySelector("#control-panel")
 controlPanel.style.display = "none"
 
 const name1 = document.querySelector("#name-1")
 const name2 = document.querySelector("#name-2")
-const changeSpritesBtn= document.getElementById('change-sprites')
 
-// game sprites
-let playerSprite1 = new Image()
 document.addEventListener("DOMContentLoaded",function(){
 
   startForm.addEventListener("click",function(e){
@@ -32,10 +28,6 @@ document.addEventListener("DOMContentLoaded",function(){
         controlPanel.style.display = 'none'
       }
     }
-  })
-
-  changeSpritesBtn.addEventListener('click', e=>{
-
   })
 
   document.addEventListener("keypress",function(e){

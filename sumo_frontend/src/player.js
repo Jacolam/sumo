@@ -1,5 +1,10 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
+const changeSpritesBtn= document.getElementById('change-sprites')
+let playerSprite1 = new Image();
+let playerSprite2 = new Image();
+let evans = false;
+let ralph = false;
 var ballRadius = 20;
 //player 1
 var x1 = canvas.width/2 - 50 ;
@@ -32,6 +37,7 @@ const distance = function(x1, x2,y1, y2){
       ctx.fillStyle = "#0095DD";
       ctx.fill();
       ctx.closePath();
+      ctx.drawImage(playerSprite1, x1-20, y1-20, 40, 40);
   }
 
   function player2() {
@@ -40,6 +46,7 @@ const distance = function(x1, x2,y1, y2){
       ctx.fillStyle = "#9995DD";
       ctx.fill();
       ctx.closePath();
+      ctx.drawImage(playerSprite2, x2-20, y2-20, 40, 40);
   }
 
   function deathCircle() {
@@ -124,4 +131,13 @@ function draw() {
 
 }
 
+changeSpritesBtn.addEventListener('click', e=>{
+      evans = !evans
+      ralph = !ralph
+      if(evans && ralph){
+  return playerSprite1.src = "./assets/evans.png",
+       playerSprite2.src = "./assets/ralph.png";
+
+    }
+})
 setInterval(draw, 10);
