@@ -52,7 +52,6 @@ const distance = function(x1, x2,y1, y2){
 function draw() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     player1();
     player2();
     deathCircle();
