@@ -163,16 +163,15 @@ function draw() {
       //new location of player 2
       x2 += dx2;
       y2 += dy2;
-
       circRad -= .05}
 
     }else if (distance(x1, x3 ,y1, y3) >= circRad){
       console.log("Point to player 2")
        player2Points++
        p2Score.innerHTML = `<h3 class="score-alignment" style='color: purple;'>score: ${player2Points}</h3>`
-       if(player2Points === 3) {
-         alert(`${name2.value} has Won!`)
-       }
+       // if(player2Points === 3) {
+       //   alert(`${name2.value} has Won!`)
+       // }
       //add points to other player
       x1 = canvas.width/2 - 50
       dx1 = 0
@@ -184,9 +183,9 @@ function draw() {
        player1Points++
       p1Score.innerHTML = `<h3 class="score-alignment" style='color: blue;'>score: ${player1Points}</h3>`
        console.log(player1Points)
-       if(player1Points === 3) {
-         alert(`${name1.value} has Won!`)
-       }
+       // if(player1Points === 3) {
+       //   alert(`${name1.value} has Won!`)
+       // }
       //add points to other player
       x2 = canvas.width/2 + 50
       dx2 = 0
@@ -216,7 +215,12 @@ function draw() {
       x2 += dx2;
       y2 += dy2;
       if(enterplayers){
-        circRad -= .05
+        if (circRad < 125){
+          // alert('circle ended')
+        }else {
+          circRad -= .05
+        }
+        console.log(circRad)
       }// circle only begins to move after the game has started
     }
 }
