@@ -31,6 +31,7 @@ var circRad = 300
 var player1Points = 0
 var player2Points = 0
 
+var globaltimer = 0
 //power up
 const plusOrMinus = function(){
   if (Math.random() < 0.5){
@@ -105,8 +106,8 @@ function draw() {
       if((counter % 200) === 0){
         powerup = true
         console.log("spawning")
-        x4 = canvas.width/2 + Math.random()*200*plusOrMinus()
-        y4 = canvas.height/2 + Math.random()*200*plusOrMinus()
+        x4 = canvas.width/2 + Math.random()*(circRad-5)*plusOrMinus()
+        y4 = canvas.height/2 + Math.random()*(circRad-5)*plusOrMinus()
         bubba()
       }
     }
@@ -214,13 +215,18 @@ function draw() {
       dy2 = dy2 * acc2
       x2 += dx2;
       y2 += dy2;
-      if(enterplayers){
-        if (circRad < 125){
+    if(enterplayers){
+        globaltimer++
+        if(globaltimer/100 > 45){
+          if (player1Points > player2Points){
+            alert(`${name1.value} has Won!`)
+          }else{alert(`${name2.value} has Won!`)}
+        }
+        if (circRad < 170){
           // alert('circle ended')
         }else {
           circRad -= .05
         }
-        console.log(circRad)
       }// circle only begins to move after the game has started
     }
 }
