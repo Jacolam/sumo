@@ -93,13 +93,22 @@ function bubba(){
 }
 
 var powerup = true
-
+var counter = 0
 function draw() {
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     if(powerup){
       bubba();
+    }else{
+      counter++
+      if((counter % 200) === 0){
+        powerup = true
+        console.log("spawning")
+        x4 = canvas.width/2 + Math.random()*200*plusOrMinus()
+        y4 = canvas.height/2 + Math.random()*200*plusOrMinus()
+        bubba()
+      }
     }
     player1();
     player2();
@@ -118,20 +127,20 @@ function draw() {
       dy2 = 0
     }
     //allows player 1 to bounce off walls
-    if(x1 + dx1 > (canvas.width-ballRadius1) || x1 + dx1 < ballRadius1) {
-        dx1 = -dx1 ;
-    }
-    if(y1 + dy1 > canvas.height-ballRadius1 || y1 + dy1 < ballRadius1) {
-        dy1 = -dy1;
-    }
-
-    //allows player 2 to bounce off walls
-    if(x2 + dx2 > (canvas.width-ballRadius2) || x2 + dx2 < ballRadius2) {
-        dx2 = -dx2 ;
-    }
-    if(y2 + dy2 > canvas.height-ballRadius2 || y2 + dy2 < ballRadius2) {
-        dy2 = -dy2;
-    }
+    // if(x1 + dx1 > (canvas.width-ballRadius1) || x1 + dx1 < ballRadius1) {
+    //     dx1 = -dx1 ;
+    // }
+    // if(y1 + dy1 > canvas.height-ballRadius1 || y1 + dy1 < ballRadius1) {
+    //     dy1 = -dy1;
+    // }
+    //
+    // //allows player 2 to bounce off walls
+    // if(x2 + dx2 > (canvas.width-ballRadius2) || x2 + dx2 < ballRadius2) {
+    //     dx2 = -dx2 ;
+    // }
+    // if(y2 + dy2 > canvas.height-ballRadius2 || y2 + dy2 < ballRadius2) {
+    //     dy2 = -dy2;
+    // }
 
     // collision of players
     if(distance(x1, x2, y1, y2) <= ballRadius1 + ballRadius2){
@@ -184,15 +193,15 @@ function draw() {
       y2 = canvas.height/2
       dy2 = 0
     }else if (distance(x1,x4,y1,y4)<= ballRadius1 + 20){
-      ballRadius1 += 20
+      ballRadius1 += 3
       powerup = false
-      p1multiplier = .85
+      p1multiplier = p1multiplier*.93
       x4 = 0
       y4 = 0
     }else if (distance(x2,x4,y2,y4)<= ballRadius2 + 20){
-      ballRadius2 += 20
+      ballRadius2 += 3
       powerup = false
-      p2multiplier = .85
+      p2multiplier = p2multiplier*.93
       x4 = 0
       y4 = 0
     }else{
