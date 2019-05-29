@@ -11,6 +11,7 @@ const name2 = document.querySelector("#name-2")
 const p1 = document.getElementById('p1-tag')
 const p2 = document.getElementById('p2-tag')
 
+const sprite = document.getElementById('change-sprites')
 
 
 document.addEventListener("DOMContentLoaded",function(){
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded",function(){
       enterplayers = true
       myCanvas.style.display = 'block';
       startForm.style.display = 'none'
+      sprite.style.display = 'block'
 
       p1.innerHTML = `<h3 class="name-alignment" style='color: blue;'>${name1.value}</h3>`
       p2.innerHTML = `<h3 class="name-alignment" style='color: purple;'>${name2.value}</h3>`
