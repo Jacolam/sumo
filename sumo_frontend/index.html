@@ -2,6 +2,8 @@
 <html lang="en" dir="ltr">
 
   <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
     <meta charset="utf-8">
     <title>SUMO</title>
     <style>
@@ -12,49 +14,22 @@
       border:1px solid black;
       padding-left: 20px
     }
-
-    table, .name-alignment, .score-alignment   {
-
+    div.row{
+      padding-right: 420px
+    }
+    div.container{
+      float: left;
     }
 
-    /* h2 {
-      display:inline;
-      position: relative;
-      top: .5%;
-      left: .5%;
-      padding-right: 150px;
-    }
 
-    h3 {
-      height: 50px;
-      display:inline;
-      position: relative;
-      top: .5%;
-      left: .5%;
-      padding-right: 150px;
-    } */
 
-    .name-alignment{
-      display:inline;
-      position: relative;
-      top: .5%;
-      left: .5%;
-      padding-right: 180px;
-    }
-    .score-alignment{
-    height: 50px;
-    display:inline;
-    position: relative;
-    top: .5%;
-    left: .5%;
-    padding-right: 150px;
-    }
 
     </style>
 
   </head>
 
   <body>
+
     <h1>SUMO ARENA</h1>
 
     <form id="startForm" action="index.html" method="post" style="">
@@ -85,20 +60,28 @@
 
     </div>
 
-    <table>
-    <h3 id="p1-tag" class="name-alignment"></h3>
-    <h3 id="p2-tag" class="name-alignment"></h3>
-    </table>
 
-    <table>
 
-      <h3 id="p1-score" class="score-alignment"></h3>
-      <h3 id="p2-score" class="score-alignment"></h3>
-    </table>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3 id="p1-tag"></h3>
+      <h3 id="p1-score"></h3>
+    </div>
+    <div class="col">
+      <h3 id="p2-tag"></h3>
+      <h3 id="p2-score"></h3>
+    </div>
+  </div>
+</div>
+
 
     <canvas id="myCanvas" width="480" height="480" style='display:none' ></canvas>
       <script type="text/javascript" src='./src/player.js'></script>
       <script type="text/javascript" src='./src/index.js'></script>
+
+
+
   </body>
 
 </html>
