@@ -32,10 +32,14 @@ var player1Points = 0
 var player2Points = 0
 
 //power up
-const plusOrMinus = function(){Math.random() < 0.5 ? -1 : 1}
+const plusOrMinus = function(){
+  if (Math.random() < 0.5){
+    return -1
+  }else{
+    return 1}}
 // debugger
-var x4 = canvas.width/2 + Math.random()*200
-var y4 = canvas.height/2 + Math.random()*200
+var x4 = canvas.width/2 + Math.random()*200*plusOrMinus()
+var y4 = canvas.height/2 + Math.random()*200*plusOrMinus()
 
 let p2Score = document.getElementById('p2-score')
 let p1Score = document.getElementById('p1-score')
