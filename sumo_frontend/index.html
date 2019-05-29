@@ -18,10 +18,20 @@
       padding-right: 420px
     }
     div.container{
-      float: left;
+      position: absolute;
+      left: 35%;
+      bottom: 75%;
     }
+    canvas{
+      position: absolute;
+      left: 35%;
+      bottom: 10%;
+    }
+    button.center{
+      position: absolute;
+      left: 46%;
 
-
+    }
 
 
     </style>
@@ -30,17 +40,17 @@
 
   <body>
 
-    <h1>SUMO ARENA</h1>
+    <h1 align="center">SUMO ARENA</h1>
 
-    <form id="startForm" action="index.html" method="post" style="">
+    <form align="center" id="startForm" action="index.html" method="post" style="">
       <p>Player 1<input id="name-1" type="text" name="player1" value=""></p>
       <p>Player 2<input id="name-2" type="text" name="player2" value=""></p>
       <button type="button" name="controls"> Controls</button>
       <input type="button" name="start" value="Start">
     </form>
-    <br>
-    <button id="change-sprites" type="button">Change Sprites</button>
-    <br>
+
+    <button class="center" id="change-sprites" type="button" style='display:none'>Change Sprites</button>
+
     <div id="control-panel" style='display:none'>
       <div class="player-controls">
         <h3>Player 1</h3>
