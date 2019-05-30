@@ -200,7 +200,7 @@ function draw() {
     roundtimer--
     let seconds = Math.round(roundtimer / 100)
 
-    if(seconds === 40){ /*ends the game*/
+    if(seconds === 0){ /*ends the game*/
       if (p1Points > p2Points){
 
         canvas.style.display = 'none'
