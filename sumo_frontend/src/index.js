@@ -14,13 +14,11 @@ const p2 = document.getElementById('p2-tag')
 const sprite = document.getElementById('change-sprites')
 
 
-
-
 document.addEventListener("DOMContentLoaded",function(){
 
 
   startForm.addEventListener("click",function(e){
-    console.log(e.target.name)
+    // console.log(e.target.name)
     const target = e.target.name
     if(target === "start")
     if (name1.value && name2.value ){
@@ -60,46 +58,46 @@ document.addEventListener("DOMContentLoaded",function(){
     switch(pressKey){
       //player 1 listener
       case 'w':
-        dy1 += -2
+        dy += -2
         break;
       case 's':
-        dy1 += 2
+        dy += 2
         break;
       case 'a':
-        dx1 += -2
+        dx += -2
         break;
       case 'd':
-        dx1 += 2
+        dx += 2
         break;
         // player 1 listener end
         //reset locations if stuck
       case 'e':
-        dx1 = 0
-        dy1 = 0
+        dx = 0
+        dy = 0
         break;
       case ' ':
-        x1 = canvas.width/2 - 50
-        y1 = canvas.height-250
+        x = canvas.width/2 - 50
+        y = canvas.height-250
 
-        x2 = canvas.width/2 + 50
-        y2 = canvas.height-250
+        x = canvas.width/2 + 50
+        y = canvas.height-250
         break;
       //player 2 listener
       case 'i':
-        dy2 += -2
+        dh += -2
         break;
       case 'k':
-        dy2 += 2
+        dh += 2
         break;
       case 'j':
-        dx2 += -2
+        dg += -2
         break;
       case 'l':
-        dx2 += 2
+        dg += 2
         break;
       case 'u':
-        dx2 = 0
-        dy2 = 0
+        dg = 0
+        dh = 0
       break;
         //player 2 listener end
     }//switch end
