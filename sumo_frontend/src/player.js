@@ -4,8 +4,8 @@ const changeSpritesBtn= document.getElementById('change-sprites')
 const timerX = document.getElementById('gig')
 let playerSprite1 = new Image();
 let playerSprite2 = new Image();
-let evans = false;
-let ralph = false;
+// let evans = false;
+// let ralph = false;
 var ballRadius = 20;
 //player 1
 var x1 = canvas.width/2 - 50 ;
@@ -108,8 +108,8 @@ function draw() {
       if((counter % 200) === 0){
         powerup = true
         console.log("spawning")
-        x4 = canvas.width/2 + Math.random()*(circRad-5)*plusOrMinus()
-        y4 = canvas.height/2 + Math.random()*(circRad-5)*plusOrMinus()
+        x4 = canvas.width/2 + Math.random()*(circRad-20)*plusOrMinus()
+        y4 = canvas.height/2 + Math.random()*(circRad-20)*plusOrMinus()
         bubba()
       }
     }
@@ -176,9 +176,9 @@ function draw() {
        //   alert(`${name2.value} has Won!`)
        // }
       //add points to other player
-      x1 = canvas.width/2 - 50
+      x1 = canvas.width/2 + Math.random()*(circRad-20)*plusOrMinus()
       dx1 = 0
-      y1 = canvas.height/2
+      y1 = canvas.height/2 + Math.random()*(circRad-20)*plusOrMinus()
       dy1 = 0
       //collision with circle
     }else if (distance(x2, x3 ,y2, y3) >= circRad){
@@ -190,9 +190,9 @@ function draw() {
        //   alert(`${name1.value} has Won!`)
        // }
       //add points to other player
-      x2 = canvas.width/2 + 50
+      x2 = canvas.width/2 + Math.random()*(circRad-20)*plusOrMinus()
       dx2 = 0
-      y2 = canvas.height/2
+      y2 = canvas.height/2 + Math.random()*(circRad-20)*plusOrMinus()
       dy2 = 0
     }else if (distance(x1,x4,y1,y4)<= ballRadius1 + 20){
       ballRadius1 += 3
@@ -248,12 +248,24 @@ function draw() {
 }
 
 changeSpritesBtn.addEventListener('click', e=>{
-      evans = !evans
-      ralph = !ralph
-      if(evans && ralph){
-  return playerSprite1.src = "./assets/evans.png",
-       playerSprite2.src = "./assets/ralph.png";
-
-    }
+      let spritesGroup = ['./assets/popeye.png', './assets/evans.png','./assets/ralph.png', './assets/snorlax.png', './assets/seb.png', './assets/pikachu.png'];
+      let index = Math.floor((Math.random() * spritesGroup.length))
+      // group sprite
+         if(index == 0){
+          return playerSprite1.src = spritesGroup[index],
+                    playerSprite2.src = spritesGroup[index+1];
+        }else if(index > 0 && index <5){
+          return playerSprite1.src = spritesGroup[index],
+                playerSprite2.src = spritesGroup[index+1];
+        }else{
+          return playerSprite1.src = spritesGroup[index],
+                playerSprite2.src = spritesGroup[index-1];
+        }
+// 2 sprites
+  //     if(evans && ralph){
+  // return playerSprite1.src = "./assets/evans.png",
+  //      playerSprite2.src = "./assets/ralph.png";
+  //
+  //   }
 })
 setInterval(draw, 10);
