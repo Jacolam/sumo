@@ -151,29 +151,6 @@ function draw() {
     g += dg;
     h += dh;
     }
-    //move into enter players
-    if(globaltimer/100 > 45){
-
-      if (player1Points > player2Points){
-        canvas.style.display = 'none'
-        sprite.style.display = 'none'
-        timerX.style.display = 'none'
-        score.style.display = 'none'
-
-        winScreen.innerHTML = `
-
-        <h1 align="center" style="color:blue; font-size: 60px;">${name1.value}</h1>
-        <h1 align="center" style="font-size: 60px;">has Won!</h1>
-        `
-        const homeBtn = document.getElementById('reloadBtn')
-
-        vicDiv.style.display = 'block'
-
-      }else{
-        canvas.style.display = 'none'
-        sprite.style.display = 'none'
-        timerX.style.display = 'none'
-        score.style.display = 'none'}
 
   //collision with circle
 }else if (distance(x, cx ,y, cy) >= circRad){ /*points to player 2 */
@@ -220,18 +197,36 @@ function draw() {
 
   if(enterplayers){
 
-    let x = roundtimer--
-    let y = Math.round(x / 100)
+    roundtimer--
+    let seconds = Math.round(roundtimer / 100)
 
-    if(y === 0){ /*ends the game*/
+    if(seconds === 43){ /*ends the game*/
       if (p1Points > p2Points){
-        location.reload();
+        canvas.style.display = 'none'
+        sprite.style.display = 'none'
+        timerX.style.display = 'none'
+        score.style.display = 'none'
+        winScreen.innerHTML = `
+        <h1 align="center" style="color:blue; font-size: 60px;">${name1.value}</h1>
+        <h1 align="center" style="font-size: 60px;">has Won!</h1>
+        `
+        const homeBtn = document.getElementById('reloadBtn')
+        vicDiv.style.display = 'block'
       }else{
-        location.reload();}
-    }else if(y <= 10){timerX.innerHTML = `<h3 class="rTimer" style='color:red' id="gig">${y}</h3>`
-    }
-    else{
-      timerX.innerText = y
+        canvas.style.display = 'none'
+        sprite.style.display = 'none'
+        timerX.style.display = 'none'
+        score.style.display = 'none'
+        winScreen.innerHTML = `
+        <h1 align="center" style="color:purple; font-size: 60px;">${name2.value}</h1>
+        <h1 align="center" style="font-size: 60px;">has Won!</h1>
+        `
+        const homeBtn = document.getElementById('reloadBtn')
+        vicDiv.style.display = 'block'}
+    }//if seconds
+    if(seconds <= 40){timerX.innerHTML = `<h3 class="rTimer" style='color:red' id="gig">${seconds}</h3>`
+    }else{
+      timerX.innerText = seconds
     }
 
     if (circRad < 170){
@@ -241,6 +236,7 @@ function draw() {
       circRad -= .05
     }
   }
+  //end of enterpalyers
 } // end of draw
 
 changeSpritesBtn.addEventListener('click', e=>{

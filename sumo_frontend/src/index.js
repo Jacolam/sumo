@@ -17,27 +17,29 @@ const sprite = document.getElementById('change-sprites')
 document.addEventListener("DOMContentLoaded",function(){
 
 
-  startForm.addEventListener("click",function(e){
+  document.addEventListener("click",function(e){
     // console.log(e.target.name)
     const target = e.target.name
-    if(target === "start")
-    if (name1.value && name2.value ){
+    if(target === "start"){
+      if (name1.value && name2.value ){
 
-      enterplayers = true
-      myCanvas.style.display = 'block';
-      startForm.style.display = 'none'
-      sprite.style.display = 'block'
-      controlPanel.style.display = 'none'
-      timerX.style.display = 'block'
+        enterplayers = true
+        myCanvas.style.display = 'block';
+        startForm.style.display = 'none'
+        sprite.style.display = 'block'
+        controlPanel.style.display = 'none'
+        timerX.style.display = 'block'
 
-      p1.innerHTML = `<h3 class="name-alignment" style='color: blue;'>${name1.value}</h3>`
-      p2.innerHTML = `<h3 class="name-alignment" style='color: purple;'>${name2.value}</h3>`
+        p1.innerHTML = `<h3 class="name-alignment" style='color: blue;'>${name1.value}</h3>`
+        p2.innerHTML = `<h3 class="name-alignment" style='color: purple;'>${name2.value}</h3>`
 
-      p1Score.innerHTML = `<h3 class="score-alignment" style='color: blue;'>score: 0</h3>`
-      p2Score.innerHTML = `<h3 class="score-alignment" style='color: purple;'>score: 0</h3>`
+        p1Score.innerHTML = `<h3 class="score-alignment" style='color: blue;'>score: 0</h3>`
+        p2Score.innerHTML = `<h3 class="score-alignment" style='color: purple;'>score: 0</h3>`
 
-    }else {
-      alert("Please add player names")
+      }else{
+        alert("Please add player names")
+    }}else if(e.target.id === "reloadBtn"){
+      window.location.reload()
     }
     if(target === "controls"){
       controlsView = !controlsView
