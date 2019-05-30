@@ -2,87 +2,87 @@ const canvas = document.getElementById("myCanvas");
 const changeSpritesBtn= document.getElementById('change-sprites')
 const timerX = document.getElementById('gig')
 var ctx = canvas.getContext("2d");
-let playerSprite1 = new Image();
-let playerSprite2 = new Image();
+let p1Sprite = new Image();
+let p2Sprite = new Image();
 
 //helper functions
-const plusOrMinus = function(){
+const posOrNeg = function(){
   if (Math.random() < 0.5){
     return -1
   }else{
     return 1}
 }
 
-const distance = function(x1, x2,y1, y2){
-  return Math.sqrt((x1-x2)**2 +(y1-y2)**2)
+const distance = function(x, g,y, h){
+  return Math.sqrt((x-g)**2 +(y-h)**2)
 }
 
 const randomLocX = function(){
-  return (canvas.width/2 + Math.random()*(circRad-20)*plusOrMinus())
+  return (canvas.width/2 + Math.random()*(circRad-20)*posOrNeg())
 }
 
 const randomLocY = function(){
-  return (canvas.height/2 + Math.random()*(circRad-20)*plusOrMinus())
+  return (canvas.height/2 + Math.random()*(circRad-20)*posOrNeg())
 }
 
 //player 1 variables
-var x1 = canvas.width/2 - 50 ;
-var y1 = canvas.height-250;
-var dx1 = 0;
-var dy1 = 0;
+var x = canvas.width/2 - 50 ;
+var y = canvas.height-250;
+var dx = 0;
+var dy = 0;
 var acc1 = .99
-var p1multiplier = 1.5
-var ballRadius1 = 20;
+var p1multi = 1.5
+var p1Rad = 20;
 
 //player 2 variables
-var x2 = canvas.width/2 + 50 ;
-var y2 = canvas.height-250;
-var dx2 = 0;
-var dy2 = 0;
+var g = canvas.width/2 + 50 ;
+var h = canvas.height-250;
+var dg = 0;
+var dh = 0;
 var acc2 = .99
-var p2multiplier = 1.5
-var ballRadius2 = 20;
+var p2multi = 1.5
+var p2Rad = 20;
 
 // outer circle params
-var x3 = canvas.width/2 ;
-var y3 = canvas.height/2 ;
+var cx = canvas.width/2 ;
+var cy = canvas.height/2 ;
 var circRad = 300
 
 //powerup locations
-var x4 = canvas.width/2 + Math.random()*200*plusOrMinus()
-var y4 = canvas.height/2 + Math.random()*200*plusOrMinus()
+var powerX = canvas.width/2 + Math.random()*200*posOrNeg()
+var powerY = canvas.height/2 + Math.random()*200*posOrNeg()
 
 //in game points and timers
-var player1Points = 0
+var p1Points = 0
 const p1Score = document.getElementById('p1-score')
 
-var player2Points = 0
+var p2Points = 0
 const p2Score = document.getElementById('p2-score')
 
 var roundtimer = 4500
 
 //defining players and objects
 function player1() {
-    ctx.beginPath();
-    ctx.arc(x1, y1, ballRadius1, 0, Math.PI*2);
-    ctx.fillStyle = "#0095DD";
-    ctx.fill();
-    ctx.closePath();
-    ctx.drawImage(playerSprite1, x1 - ballRadius1, y1 - ballRadius1, 2 * ballRadius1, 2 * ballRadius1);
+  ctx.beginPath();
+  ctx.arc(x, y, p1Rad, 0, Math.PI*2);
+  ctx.fillStyle = "#0095DD";
+  ctx.fill();
+  ctx.closePath();
+  ctx.drawImage(p1Sprite, x - p1Rad, y - p1Rad, 2 * p1Rad, 2 * p1Rad);
 }
 
 function player2() {
-    ctx.beginPath();
-    ctx.arc(x2, y2, ballRadius2, 0, Math.PI*2);
-    ctx.fillStyle = "#9995DD";
-    ctx.fill();
-    ctx.closePath();
-    ctx.drawImage(playerSprite2, x2 - ballRadius2, y2 - ballRadius2, 2 * ballRadius2, 2 * ballRadius2);
+  ctx.beginPath();
+  ctx.arc(g, h, p2Rad, 0, Math.PI*2);
+  ctx.fillStyle = "#9995DD";
+  ctx.fill();
+  ctx.closePath();
+  ctx.drawImage(p2Sprite, g - p2Rad, h - p2Rad, 2 * p2Rad, 2 * p2Rad);
 }
 
 function deathCircle() {
   ctx.beginPath();
-  ctx.arc(x3, y3, circRad, 0, Math.PI *2);
+  ctx.arc(cx, cy, circRad, 0, Math.PI *2);
   ctx.stroke();
   ctx.closePath();
 }
@@ -93,13 +93,12 @@ shroomsprite.src = "https://oyster.ignimgs.com/mediawiki/apis.ign.com/new-super-
 
 function bubba(){
   ctx.beginPath();
-  ctx.arc(x4, y4, 20, 0, Math.PI *2);
+  ctx.arc(powerX, powerY, 20, 0, Math.PI *2);
   ctx.closePath();
-  ctx.drawImage(shroomsprite, x4 - 25, y4 -25, 50, 50)
+  ctx.drawImage(shroomsprite, powerX - 25, powerY -25, 50, 50)
 }
 
 var powerup = true
-var counter = 0
 
 //redrawing each frame
 function draw() {
@@ -109,12 +108,11 @@ function draw() {
   if(powerup){
     bubba();
   }else{
-    counter++
-    if((counter % 200) === 0){
+    if((roundtimer % 200) === 0){
       powerup = true
       console.log("spawning")
-      x4 = randomLocX()
-      y4 = randomLocY()
+      powerX = randomLocX()
+      powerY = randomLocY()
       bubba()
     }
   }
@@ -123,77 +121,73 @@ function draw() {
   player2();
   deathCircle();
   //brings player to complete stop
-  if( Math.abs(dx1) < .2){dx1 = 0}
-  if (Math.abs(dy1) <.2){dy1 = 0}
-  if( Math.abs(dx2) < .2){dx2 = 0}
-  if (Math.abs(dy2) <.2){dy2 = 0}
+  if( Math.abs(dx) < .2){dx = 0}
+  if (Math.abs(dy) <.2){dy = 0}
+  if( Math.abs(dg) < .2){dg = 0}
+  if (Math.abs(dh) <.2){dh = 0}
 
   // collision of players
-  if(distance(x1, x2, y1, y2) <= ballRadius1 + ballRadius2){
-    if(dx1=== 0 && dy1=== 0){
-      // console.log("player 1 is not moving")
-      dx1 = -dx2
-      dy1 = -dy2
-    }else if (dx2=== 0 && dy2=== 0){
-      // console.log("player 2 is not moving")
-      dx2 = -dx1
-      dy2 = -dy1
+  if(distance(x, g, y, h) <= p1Rad + p2Rad){
+    if(dx=== 0 && dy=== 0){ /*static collision*/
+      dx = -dg
+      dy = -dh
+    }else if (dg=== 0 && dh=== 0){ /*static collision*/
+      dg = -dx
+      dh = -dy
     }else{
-    dx1 = -dx1 * p1multiplier
-    dy1 = -dy1  * p1multiplier
-    dx2 = -dx2 * p2multiplier
-    dy2 = -dy2 * p2multiplier
+    dx = -dx * p1multi
+    dy = -dy  * p1multi
+    dg = -dg * p2multi
+    dh = -dh * p2multi
     //new location of player 1
-    x1 += dx1
-    y1 += dy1
+    x += dx
+    y += dy
     //new location of player 2
-    x2 += dx2;
-    y2 += dy2;
+    g += dg;
+    h += dh;
     }
 
   //collision with circle
-  }else if (distance(x1, x3 ,y1, y3) >= circRad){
-    // console.log("Point to player 2")
-     player2Points++
-     p2Score.innerHTML = `<h3 class="score-alignment" style='color: purple;'>score: ${player2Points}</h3>`
-    x1 = randomLocX()
-    y1 = randomLocY()
-    dx1 = 0
-    dy1 = 0
-  }else if (distance(x2, x3 ,y2, y3) >= circRad){
-    console.log("Point to player 1")
-     player1Points++
-    p1Score.innerHTML = `<h3 class="score-alignment" style='color: blue;'>score: ${player1Points}</h3>`
-     console.log(player1Points)
-    x2 = randomLocX()
-    y2 = randomLocY()
-    dx2 = 0
-    dy2 = 0
+}else if (distance(x, cx ,y, cy) >= circRad){ /*points to player 2 */
+    p2Points++
+    p2Score.innerHTML = `<h3 class="score-alignment" style='color: purple;'>score: ${p2Points}</h3>`
+    x = randomLocX()
+    y = randomLocY()
+    dx = 0
+    dy = 0
+
+  }else if (distance(g, cx ,h, cy) >= circRad){ /*points to player 1 */
+    p1Points++
+    p1Score.innerHTML = `<h3 class="score-alignment" style='color: blue;'>score: ${p1Points}</h3>`
+    g = randomLocX()
+    h = randomLocY()
+    dg = 0
+    dh = 0
 
   //collision with powerup
-  }else if (distance(x1,x4,y1,y4)<= ballRadius1 + 20){
-    ballRadius1 += 3
+}else if (distance(x,powerX,y,powerY)<= p1Rad + 20){
+    p1Rad += 3
     powerup = false
-    p1multiplier = p1multiplier*.93
-    x4 = 0
-    y4 = 0
-  }else if (distance(x2,x4,y2,y4)<= ballRadius2 + 20){
-    ballRadius2 += 3
+    p1multi = p1multi*.93
+    powerX = 0
+    powerY = 0
+  }else if (distance(g,powerX,h,powerY)<= p2Rad + 20){
+    p2Rad += 3
     powerup = false
-    p2multiplier = p2multiplier*.93
-    x4 = 0
-    y4 = 0
+    p2multi = p2multi*.93
+    powerX = 0
+    powerY = 0
   }else{
     //new location of player 1
-    dx1 = dx1 * acc1
-    dy1 = dy1 * acc1
-    x1 += dx1;
-    y1 += dy1;
+    dx = dx * acc1
+    dy = dy * acc1
+    x += dx;
+    y += dy;
     //new location of player 2
-    dx2 = dx2 * acc2
-    dy2 = dy2 * acc2
-    x2 += dx2;
-    y2 += dy2;
+    dg = dg * acc2
+    dh = dh * acc2
+    g += dg;
+    h += dh;
   }
 
   if(enterplayers){
@@ -202,7 +196,7 @@ function draw() {
     let y = Math.round(x / 100)
 
     if(y === 0){ /*ends the game*/
-      if (player1Points > player2Points){
+      if (p1Points > p2Points){
         location.reload();
       }else{
         location.reload();}
@@ -226,14 +220,14 @@ changeSpritesBtn.addEventListener('click', e=>{
   let index = Math.floor((Math.random() * spritesGroup.length))
   // group sprite
   if(index == 0){
-    return playerSprite1.src = spritesGroup[index],
-          playerSprite2.src = spritesGroup[index+1];
+    return p1Sprite.src = spritesGroup[index],
+          p2Sprite.src = spritesGroup[index+1];
   }else if(index > 0 && index <5){
-    return playerSprite1.src = spritesGroup[index],
-          playerSprite2.src = spritesGroup[index+1];
+    return p1Sprite.src = spritesGroup[index],
+          p2Sprite.src = spritesGroup[index+1];
   }else{
-    return playerSprite1.src = spritesGroup[index],
-          playerSprite2.src = spritesGroup[index-1];
+    return p1Sprite.src = spritesGroup[index],
+          p2Sprite.src = spritesGroup[index-1];
   }
 })
 
