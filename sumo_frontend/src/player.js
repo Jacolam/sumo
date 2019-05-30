@@ -200,7 +200,7 @@ function draw() {
     roundtimer--
     let seconds = Math.round(roundtimer / 100)
 
-    if(seconds === 43){ /*ends the game*/
+    if(seconds === 0){ /*ends the game*/
       if (p1Points > p2Points){
         canvas.style.display = 'none'
         sprite.style.display = 'none'
@@ -224,7 +224,7 @@ function draw() {
         const homeBtn = document.getElementById('reloadBtn')
         vicDiv.style.display = 'block'}
     }//if seconds
-    if(seconds <= 40){timerX.innerHTML = `<h3 class="rTimer" style='color:red' id="gig">${seconds}</h3>`
+    if(seconds <= 10){timerX.innerHTML = `<h3 class="rTimer" style='color:red' id="gig">${seconds}</h3>`
     }else{
       timerX.innerText = seconds
     }
