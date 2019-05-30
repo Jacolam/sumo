@@ -83,12 +83,19 @@
   <body background="http://d3q4fqc42opanl.cloudfront.net/20180311054438/Chiswick-Auctions-London-Woodblock-Kuniyoshi.jpg">
 
     <h1 class="coo" align="center">SUMO ARENA</h1>
+    <script>
+      function play(){
+        var audio = document.getElementById("audio");
+        audio.play();
+                }
+    </script>
 
     <form align="center" id="startForm" action="index.html" method="post" style="">
       <p class="player-1">Player 1  <input id="name-1" type="text" name="player1" value=""></p>
       <p class="player-2">Player 2  <input id="name-2" type="text" name="player2" value=""></p>
       <button class="btn btn-dark" type="button" name="controls"> Controls</button>
-      <input class="btn btn-dark" type="button" name="start" value="Start">
+      <input class="btn btn-dark" type="button" name="start" value="Start" onclick="play()">
+      <audio id="audio" src="/Users/rog/Music/iTunes/iTunes Media/Music/Nickelodeon Animation Studios/Avatar_ The Last Airbender/03 Agni Kai.mp3"></audio>
     </form>
 
     <button class="center btn btn-success" id="change-sprites" type="button" style='display:none'>Change Sprites</button>
@@ -131,6 +138,7 @@
 
 
     <canvas id="myCanvas" width="480" height="480" style='display:none' ></canvas>
+
       <script type="text/javascript" src='./src/player.js'></script>
       <script type="text/javascript" src='./src/index.js'></script>
 
