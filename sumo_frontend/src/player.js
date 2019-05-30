@@ -1,6 +1,7 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 const changeSpritesBtn= document.getElementById('change-sprites')
+const timerX = document.getElementById('gig')
 let playerSprite1 = new Image();
 let playerSprite2 = new Image();
 let evans = false;
@@ -32,6 +33,7 @@ var player1Points = 0
 var player2Points = 0
 
 var globaltimer = 0
+var roundtimer = 4500
 //power up
 const plusOrMinus = function(){
   if (Math.random() < 0.5){
@@ -217,10 +219,24 @@ function draw() {
       y2 += dy2;
     if(enterplayers){
         globaltimer++
+        let x = roundtimer--
+        let y = Math.round(x / 100)
+        if (y <= 10){timerX.innerHTML = `<h3 class="rTimer" style='color:red' id="gig">${y}</h3>`
+        }
+        else {
+          timerX.innerText = y
+        }
+
+
         if(globaltimer/100 > 45){
           if (player1Points > player2Points){
-            alert(`${name1.value} has Won!`)
-          }else{alert(`${name2.value} has Won!`)}
+            location.reload();
+            // alert(`${name1.value} has Won!`)
+
+          }else{location.reload();
+            // alert(`${name2.value} has Won!`)
+
+          }
         }
         if (circRad < 170){
           // alert('circle ended')

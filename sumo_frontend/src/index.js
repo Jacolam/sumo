@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded",function(){
       startForm.style.display = 'none'
       sprite.style.display = 'block'
       controlPanel.style.display = 'none'
+      timerX.style.display = 'block'
 
       p1.innerHTML = `<h3 class="name-alignment" style='color: blue;'>${name1.value}</h3>`
       p2.innerHTML = `<h3 class="name-alignment" style='color: purple;'>${name2.value}</h3>`
