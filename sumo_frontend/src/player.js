@@ -163,7 +163,8 @@ function draw() {
 
   }else if (distance(g, cx ,h, cy) >= circRad){ /*points to player 1 */
     p1Points++
-    p1Score.innerHTML = `<h3 class="score-alignment" style='color: blue;'>score: ${p1Points}</h3>`
+
+
     g = randomLocX()
     h = randomLocY()
     dg = 0
@@ -200,7 +201,7 @@ function draw() {
     roundtimer--
     let seconds = Math.round(roundtimer / 100)
 
-    if(seconds === 40){ /*ends the game*/
+    if(seconds === 0){ /*ends the game*/
       if (p1Points > p2Points){
         canvas.style.display = 'none'
         sprite.style.display = 'none'
@@ -212,17 +213,28 @@ function draw() {
         `
         const homeBtn = document.getElementById('reloadBtn')
         vicDiv.style.display = 'block'
-      }else{
+      }else if (p1Points < p2Points){
         canvas.style.display = 'none'
         sprite.style.display = 'none'
         timerX.style.display = 'none'
         score.style.display = 'none'
+
         winScreen.innerHTML = `
         <h1 align="center" style="color:purple; font-size: 60px;">${name2.value}</h1>
         <h1 align="center" style="font-size: 60px;">has Won!</h1>
         `
         const homeBtn = document.getElementById('reloadBtn')
-        vicDiv.style.display = 'block'}
+        vicDiv.style.display = 'block'
+        }else{
+          canvas.style.display = 'none'
+          sprite.style.display = 'none'
+          timerX.style.display = 'none'
+          score.style.display = 'none'
+
+          winScreen.innerHTML = `<h1 align="center" style="font-size: 60px;">Draw</h1>`
+          
+          vicDiv.style.display = 'block'
+        }
     }//if seconds
     if(seconds <= 10){timerX.innerHTML = `<h3 class="rTimer" style='color:red' id="gig">${seconds}</h3>`
     }else{
