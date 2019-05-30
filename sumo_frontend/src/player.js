@@ -3,8 +3,8 @@ var ctx = canvas.getContext("2d");
 const changeSpritesBtn= document.getElementById('change-sprites')
 let playerSprite1 = new Image();
 let playerSprite2 = new Image();
-let evans = false;
-let ralph = false;
+// let evans = false;
+// let ralph = false;
 var ballRadius = 20;
 //player 1
 var x1 = canvas.width/2 - 50 ;
@@ -209,12 +209,24 @@ function draw() {
 }
 
 changeSpritesBtn.addEventListener('click', e=>{
-      evans = !evans
-      ralph = !ralph
-      if(evans && ralph){
-  return playerSprite1.src = "./assets/evans.png",
-       playerSprite2.src = "./assets/ralph.png";
-
-    }
+      let spritesGroup = ['./assets/popeye.png', './assets/evans.png','./assets/ralph.png', './assets/snorlax.png', './assets/seb.png', './assets/pikachu.png'];
+      let index = Math.floor((Math.random() * spritesGroup.length))
+      // group sprite
+         if(index == 0){
+          return playerSprite1.src = spritesGroup[index],
+                    playerSprite2.src = spritesGroup[index+1];
+        }else if(index > 0 && index <5){
+          return playerSprite1.src = spritesGroup[index],
+                playerSprite2.src = spritesGroup[index+1];
+        }else{
+          return playerSprite1.src = spritesGroup[index],
+                playerSprite2.src = spritesGroup[index-1];
+        }
+// 2 sprites
+  //     if(evans && ralph){
+  // return playerSprite1.src = "./assets/evans.png",
+  //      playerSprite2.src = "./assets/ralph.png";
+  //
+  //   }
 })
 setInterval(draw, 10);
