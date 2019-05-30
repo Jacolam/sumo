@@ -2,6 +2,7 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 const changeSpritesBtn= document.getElementById('change-sprites')
 const timerX = document.getElementById('gig')
+const winScreen = document.getElementById('victory')
 let playerSprite1 = new Image();
 let playerSprite2 = new Image();
 let evans = false;
@@ -34,6 +35,13 @@ var player2Points = 0
 
 var globaltimer = 0
 var roundtimer = 4500
+
+const score = document.getElementById('scoreCont')
+const homeBtn = document.getElementById('reloadBtn')
+
+const vicDiv = document.getElementById("vicScreen")
+
+
 //power up
 const plusOrMinus = function(){
   if (Math.random() < 0.5){
@@ -229,11 +237,45 @@ function draw() {
 
 
         if(globaltimer/100 > 45){
+
           if (player1Points > player2Points){
-            location.reload();
+            canvas.style.display = 'none'
+            sprite.style.display = 'none'
+            timerX.style.display = 'none'
+            score.style.display = 'none'
+
+
+            winScreen.innerHTML = `
+
+            <h1 align="center" style="color:blue; font-size: 60px;">${name1.value}</h1>
+            <h1 align="center" style="font-size: 60px;">has Won!</h1>
+            `
+            const homeBtn = document.getElementById('reloadBtn')
+
+            vicDiv.style.display = 'block'
+
             // alert(`${name1.value} has Won!`)
 
-          }else{location.reload();
+          }else{
+
+            function reld(){
+              console.log('work ffs')
+            }
+
+            canvas.style.display = 'none'
+            sprite.style.display = 'none'
+            timerX.style.display = 'none'
+            score.style.display = 'none'
+
+            winScreen.innerHTML = `
+
+            <h1 align="center" style="color:purple; font-size: 60px;">${name2.value}</h1>
+            <h1 align="center" style="font-size: 60px;">has Won!</h1>
+            `
+            const homeBtn = document.getElementById('reloadBtn')
+
+
+            vicDiv.style.display = 'block'
             // alert(`${name2.value} has Won!`)
 
           }
@@ -246,6 +288,12 @@ function draw() {
       }// circle only begins to move after the game has started
     }
 }
+document.addEventListener('click', function(e){
+  console.log(e.target.id)
+  if (e.target.id === "reloadBtn"){
+    window.location.reload()
+  }
+})
 
 changeSpritesBtn.addEventListener('click', e=>{
       evans = !evans
