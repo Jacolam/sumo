@@ -18,7 +18,7 @@ class Api::V1::GamesController < ApplicationController
   private
 
   def game_params
-    params.permit(:name, :game_score)
+    params.permit(:game_score)
   end
 
   def find_game

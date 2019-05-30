@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Player.create(ign_name: 'Star', player_score: 20, game_id:1);
+Game.create(game_score: 20);
