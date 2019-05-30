@@ -1,16 +1,9 @@
 const canvas = document.getElementById("myCanvas");
 const changeSpritesBtn= document.getElementById('change-sprites')
 const timerX = document.getElementById('gig')
-
 var ctx = canvas.getContext("2d");
 let p1Sprite = new Image();
 let p2Sprite = new Image();
-
-const winScreen = document.getElementById('victory')
-const score = document.getElementById('scoreCont')
-const homeBtn = document.getElementById('reloadBtn')
-
-const vicDiv = document.getElementById("vicScreen")
 
 //helper functions
 const posOrNeg = function(){
@@ -212,47 +205,6 @@ function draw() {
     else{
       timerX.innerText = y
     }
-        if(globaltimer/100 > 45){
-
-          if (player1Points > player2Points){
-            canvas.style.display = 'none'
-            sprite.style.display = 'none'
-            timerX.style.display = 'none'
-            score.style.display = 'none'
-
-
-            winScreen.innerHTML = `
-
-            <h1 align="center" style="color:blue; font-size: 60px;">${name1.value}</h1>
-            <h1 align="center" style="font-size: 60px;">has Won!</h1>
-            `
-            const homeBtn = document.getElementById('reloadBtn')
-
-            vicDiv.style.display = 'block'
-
-            // alert(`${name1.value} has Won!`)
-
-          }else{
-
-            function reld(){
-              console.log('work ffs')
-            }
-
-            canvas.style.display = 'none'
-            sprite.style.display = 'none'
-            timerX.style.display = 'none'
-            score.style.display = 'none'
-
-            winScreen.innerHTML = `
-
-            <h1 align="center" style="color:purple; font-size: 60px;">${name2.value}</h1>
-            <h1 align="center" style="font-size: 60px;">has Won!</h1>
-            `
-            const homeBtn = document.getElementById('reloadBtn')
-
-
-            vicDiv.style.display = 'block'
-            // alert(`${name2.value} has Won!`)
 
     if (circRad < 170){
       //minimum circle size
@@ -260,14 +212,7 @@ function draw() {
       //cirlce shrinks when games begins
       circRad -= .05
     }
-}
-document.addEventListener('click', function(e){
-  console.log(e.target.id)
-  if (e.target.id === "reloadBtn"){
-    window.location.reload()
   }
-})
-}
 } // end of draw
 
 changeSpritesBtn.addEventListener('click', e=>{
