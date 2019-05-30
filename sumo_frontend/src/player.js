@@ -2,7 +2,11 @@ var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 const changeSpritesBtn= document.getElementById('change-sprites')
 const timerX = document.getElementById('gig')
+const score = document.getElementById('scoreCont')
+const homeBtn = document.getElementById('reloadBtn')
 const winScreen = document.getElementById('victory')
+const vicDiv = document.getElementById("vicScreen")
+
 let playerSprite1 = new Image();
 let playerSprite2 = new Image();
 let evans = false;
@@ -36,10 +40,7 @@ var player2Points = 0
 var globaltimer = 0
 var roundtimer = 4500
 
-const score = document.getElementById('scoreCont')
-const homeBtn = document.getElementById('reloadBtn')
 
-const vicDiv = document.getElementById("vicScreen")
 
 
 //power up
@@ -258,9 +259,6 @@ function draw() {
 
           }else{
 
-            function reld(){
-              console.log('work ffs')
-            }
 
             canvas.style.display = 'none'
             sprite.style.display = 'none'
