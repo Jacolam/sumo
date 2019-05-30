@@ -40,6 +40,26 @@ document.addEventListener("DOMContentLoaded",function(){
         alert("Please add player names")
     }}else if(e.target.id === "reloadBtn"){
       window.location.reload()
+    }else if(e.target.id === "rematchBtn"){
+        myCanvas.style.display = 'block';
+        sprite.style.display = 'block'
+        timerX.style.display = 'block'
+        score.style.display ='block'
+
+        controlPanel.style.display = 'none'
+        vicDiv.style.display = 'none'
+
+        circRad = 300
+        roundtimer = 4500
+
+        p1Rad = 20
+        p1Points = 0
+        p1Score.innerHTML = `<h3 class="score-alignment" style='color: blue;'>score: ${p1Points}</h3>`
+
+        p2Rad = 20
+        p2Points = 0
+        p2Score.innerHTML = `<h3 class="score-alignment" style='color: purple;'>score: ${p2Points}</h3>`
+
     }
     if(target === "controls"){
       controlsView = !controlsView
