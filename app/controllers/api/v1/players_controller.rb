@@ -1,2 +1,23 @@
 class Api::V1::PlayersController < ApplicationController
+  before_action :find_player, only: [:update]
+  def index
+    players = Player.all
+    render json: players
+  end
+
+  def update
+    player.update(player_params)
+    if player.save
+      render json: player, status: :accepted
+    end
+  end
+  private
+
+  def player_params
+    params.permit(:ign_name, :player_score, :game_id)
+  end
+
+  def find_player
+    player = player.find(params[:id])
+  end
 end

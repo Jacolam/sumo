@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :games, only: [:index, :update]
-      get './node_modules/rpg-awesome/css/rpg-awesome.min.css'
+      resources :players, only: [:index, :update]
+      # get './node_modules/rpg-awesome/css/rpg-awesome.min.css'
     end
   end
 end
