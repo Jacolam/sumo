@@ -14,6 +14,8 @@ const p2 = document.getElementById('p2-tag')
 const sprite = document.getElementById('change-sprites')
 
 
+
+
 document.addEventListener("DOMContentLoaded",function(){
 
 
