@@ -1,5 +1,5 @@
 class Api::V1::PlayersController < ApplicationController
-  before_action :find_player, only: [:update]
+  before_action :find_player, only: [:update, :create]
   def index
     players = Player.all
     render json: players
