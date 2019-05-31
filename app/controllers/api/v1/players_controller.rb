@@ -5,6 +5,11 @@ class Api::V1::PlayersController < ApplicationController
     render json: players
   end
 
+  def create
+    player = Player.create(player_params)
+    render json: player
+  end
+
   def update
     player.update(player_params)
     if player.save
